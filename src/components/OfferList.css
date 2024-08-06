@@ -1,63 +1,43 @@
-/* OfferList.css */
-
 .offer-list-container {
-    padding: 20px;
-    background-color: #f0f2f5;
-  }
-  
-  .offer-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-  
-  .offer-card {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    max-width: 300px;
-    width: 100%;
-    text-align: center;
-  }
-  
-  .offer-title {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    color: #333;
-  }
-  
-  .offer-description {
-    font-size: 1rem;
-    margin-bottom: 10px;
-    color: #555;
-  }
-  
-  .offer-price {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    color: #007bff;
-  }
-  
-  .offer-date {
-    font-size: 0.9rem;
-    color: #888;
-    margin-bottom: 10px;
-  }
-  
-  .offer-details-link {
-    color: #007bff;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .offer-details-link:hover {
-    text-decoration: underline;
-  }
-  
-  .error {
-    color: red;
-    text-align: center;
-  }
-  
+  padding: 20px;
+}
+
+.offer-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.offer-card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  width: 200px;
+  text-align: center;
+}
+
+.offer-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.offer-price {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.offer-details-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.offer-details-link:hover {
+  text-decoration: underline;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+}

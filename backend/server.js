@@ -90,15 +90,15 @@ app.post('/login', (req, res) => {
 
 // Teklif ekleme endpointi
 app.post('/offers', (req, res) => {
-  const { title, description, price } = req.body;
+  const { title, price, quantity, currency } = req.body;
 
-  if (!title || !description || !price) {
-    return res.status(400).json({ error: 'Title, description, and price are required' });
+  if (!title || !price || !quantity || !currency) {
+    return res.status(400).json({ error: 'Title, price, quantity, and currency are required' });
   }
 
-  const query = 'INSERT INTO offers (title, description, price) VALUES (?, ?, ?)';
+  const query = 'INSERT INTO offers (title, price, quantity, currency) VALUES (?, ?, ?, ?)';
 
-  connection.query(query, [title, description, price], (err, results) => {
+  connection.query(query, [title, price, quantity, currency], (err, results) => {
     if (err) {
       console.error('Error inserting offer: ', err);
       return res.status(500).json({ error: 'Error creating offer' });
@@ -130,7 +130,7 @@ app.get('/offers/:id', (req, res) => {
 
 // Teklifleri listeleyen endpoint
 app.get('/offers', (req, res) => {
-  const query = 'SELECT * FROM offers';
+  const query = 'SELECT id, title, price, currency FROM offers';
 
   connection.query(query, (err, results) => {
     if (err) {
@@ -144,15 +144,15 @@ app.get('/offers', (req, res) => {
 
 // Alım Kalemi Ekleme Endpointi
 app.post('/acquisition-items', (req, res) => {
-  const { name, description } = req.body;
+  const { name } = req.body;
 
-  if (!name || !description) {
-    return res.status(400).json({ error: 'Name and description are required' });
+  if (!name) {
+    return res.status(400).json({ error: 'Name is required' });
   }
 
-  const query = 'INSERT INTO acquisition_items (name, description) VALUES (?, ?)';
+  const query = 'INSERT INTO acquisition_items (name) VALUES (?)';
 
-  connection.query(query, [name, description], (err, results) => {
+  connection.query(query, [name], (err, results) => {
     if (err) {
       console.error('Error inserting acquisition item: ', err);
       return res.status(500).json({ error: 'Error adding item' });
@@ -160,6 +160,58 @@ app.post('/acquisition-items', (req, res) => {
 
     res.status(201).json({ message: 'Item added successfully' });
   });
+});
+
+// Alım Kalemlerini Listeleme Endpointi
+app.get('/acquisition-items', (req, res) => {
+  const query = 'SELECT * FROM acquisition_items';
+
+  connection.query(query, (err, results) => {
+    if (err) {
+      console.error('Error fetching acquisition items: ', err);
+      return res.status(500).json({ error: 'Error fetching acquisition items' });
+    }
+
+    res.status(200).json(results);
+  });
+});
+
+// Alım Kalemi Silme Endpointi
+app.delete('/acquisition-items/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    // Teklifleri sil
+    const deleteOffersQuery = 'DELETE FROM offers WHERE acquisition_item_id = ?';
+    await new Promise((resolve, reject) => {
+      connection.query(deleteOffersQuery, [id], (err) => {
+        if (err) {
+          console.error('Error deleting offers: ', err);
+          reject(err);
+        } else {
+          resolve();
+        }
+      });
+    });
+
+    // Alım kalemini sil
+    const deleteItemQuery = 'DELETE FROM acquisition_items WHERE id = ?';
+    await new Promise((resolve, reject) => {
+      connection.query(deleteItemQuery, [id], (err) => {
+        if (err) {
+          console.error('Error deleting acquisition item: ', err);
+          reject(err);
+        } else {
+          resolve();
+        }
+      });
+    });
+
+    res.status(200).json({ message: 'Acquisition item and related offers deleted successfully' });
+  } catch (err) {
+    console.error('Error deleting acquisition item and related offers: ', err);
+    res.status(500).json({ error: 'Error deleting acquisition item and related offers' });
+  }
 });
 
 // Sunucuyu başlat

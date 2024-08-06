@@ -32,9 +32,7 @@ const OfferList = () => {
           offers.map((offer) => (
             <div key={offer.id} className="offer-card">
               <h2 className="offer-title">{offer.title}</h2>
-              <p className="offer-description">{offer.description}</p>
-              <p className="offer-price">${offer.price}</p>
-              <p className="offer-date">Created At: {new Date(offer.created_at).toLocaleString()}</p>
+              <p className="offer-price">{offer.price} {offer.currency}</p>
               <Link to={`/offers/${offer.id}`} className="offer-details-link">View Details</Link>
             </div>
           ))

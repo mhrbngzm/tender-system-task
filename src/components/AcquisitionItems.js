@@ -1,52 +1,76 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './AcquisitionItems.css';
 
 const AcquisitionItems = () => {
   const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
+  const [acquisitionItems, setAcquisitionItems] = useState([]);
   const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+
+  useEffect(() => {
+    const fetchAcquisitionItems = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/acquisition-items');
+        setAcquisitionItems(response.data);
+      } catch (err) {
+        console.error('Error fetching acquisition items', err);
+        setError('Error fetching acquisition items');
+      }
+    };
+
+    fetchAcquisitionItems();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/acquisition-items', { name, description });
-      setSuccess('Item added successfully');
+      await axios.post('http://localhost:5000/acquisition-items', { name });
       setName('');
-      setDescription('');
+      const response = await axios.get('http://localhost:5000/acquisition-items');
+      setAcquisitionItems(response.data);
     } catch (err) {
-      setError('Error adding item');
+      console.error('Error adding acquisition item', err);
+      setError('Error adding acquisition item');
     }
   };
 
-  const isFormValid = name !== '' && description !== '';
-
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/acquisition-items/${id}`);
+      // Silinen alım kalemini frontend listeden kaldırın
+      setAcquisitionItems(acquisitionItems.filter(item => item.id !== id));
+    } catch (err) {
+      console.error('Error deleting acquisition item', err);
+      setError('Error deleting acquisition item');
+    }
+  };
+  
   return (
     <div className="acquisition-items-container">
       <h1>Add Acquisition Item</h1>
-      {error && <p className="error">{error}</p>}
-      {success && <p className="success">{success}</p>}
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Description
-          <textarea
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          ></textarea>
-        </label>
-        <button type="submit" disabled={!isFormValid}>Add Item</button>
+      <form className="acquisition-item-form" onSubmit={handleSubmit}>
+        <label htmlFor="name">Item Name:</label>
+        <input
+          type="text"
+          id="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+        <button type="submit">Add Item</button>
       </form>
+      {error && <p className="error">{error}</p>}
+      <div className="acquisition-items-list">
+        <h2>Acquisition Items</h2>
+        <ul>
+          {acquisitionItems.map((item) => (
+            <li key={item.id}>
+              {item.name}
+              <button onClick={() => handleDelete(item.id)}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
