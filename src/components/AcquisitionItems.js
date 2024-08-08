@@ -44,32 +44,49 @@ const AcquisitionItems = () => {
       setError('Error deleting acquisition item');
     }
   };
-  
+
   return (
     <div className="acquisition-items-container">
-      <h1>Add Acquisition Item</h1>
-      <form className="acquisition-item-form" onSubmit={handleSubmit}>
-        <label htmlFor="name">Item Name:</label>
-        <input
-          type="text"
-          id="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <button type="submit">Add Item</button>
-      </form>
-      {error && <p className="error">{error}</p>}
-      <div className="acquisition-items-list">
-        <h2>Acquisition Items</h2>
-        <ul>
-          {acquisitionItems.map((item) => (
-            <li key={item.id}>
-              {item.name}
-              <button onClick={() => handleDelete(item.id)}>Delete</button>
-            </li>
-          ))}
-        </ul>
+      <div className="card">
+        <div className="card-header d-flex justify-content-between">
+          <div className="header-title">
+            <h4 className="card-title">Add Acquisition Item</h4>
+          </div>
+        </div>
+        <div className="card-body">
+          <form className="acquisition-item-form" onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="name">Item Name:</label>
+              <input
+                type="text"
+                id="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+                className="form-control"
+              />
+            </div>
+            <button type="submit" className="btn btn-primary">Add Item</button>
+            {error && <p className="error">{error}</p>}
+          </form>
+        </div>
+      </div>
+      <div className="card mt-4">
+        <div className="card-header">
+          <h2 className="card-title">Acquisition Items</h2>
+        </div>
+        <div className="card-body">
+          <div className="acquisition-items-list">
+            <ul>
+              {acquisitionItems.map((item) => (
+                <li key={item.id}>
+                  {item.name}
+                  <button onClick={() => handleDelete(item.id)} className="btn btn-danger btn-sm ml-2">Delete</button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   );

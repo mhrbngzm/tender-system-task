@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './AcquisitionItems.css';
 import './NewOffer.css';
 
 const NewOffer = () => {
@@ -33,6 +34,7 @@ const NewOffer = () => {
       setTitle('');
       setPrice('');
       setQuantity('');
+      setCurrency('USD');
     } catch (err) {
       setError('Error creating offer');
     }
@@ -40,64 +42,74 @@ const NewOffer = () => {
 
   return (
     <div className="new-offer-container">
-      <h1>Create New Offer</h1>
-      <form onSubmit={handleSubmit} className="new-offer-form">
-        {error && <p className="error">{error}</p>}
-        {success && <p className="success">{success}</p>}
-
-        <div className="form-group">
-          <label htmlFor="title">Items</label>
-          <select
-            id="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          >
-            <option value="">Select Item</option>
-            {items.map(item => (
-              <option key={item.id} value={item.name}>{item.name}</option>
-            ))}
-          </select>
+      <div className="card">
+        <div className="card-header">
+          <h4 className="card-title">Create New Offer</h4>
         </div>
+        <div className="card-body">
+          <form onSubmit={handleSubmit} className="new-offer-form">
+            {error && <p className="error">{error}</p>}
+            {success && <p className="success">{success}</p>}
 
-        <div className="form-group">
-          <label htmlFor="price">Price</label>
-          <input
-            type="number"
-            id="price"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-            required
-          />
+            <div className="form-group">
+              <label htmlFor="title">Items:</label>
+              <select
+                id="title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
+                className="form-control"
+              >
+                <option value="">Select Item:</option>
+                {items.map(item => (
+                  <option key={item.id} value={item.name}>{item.name}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="price">Price:</label>
+              <input
+                type="number"
+                id="price"
+                value={price}
+                onChange={(e) => setPrice(e.target.value)}
+                required
+                className="form-control"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="quantity">Piece:</label>
+              <input
+                type="number"
+                id="quantity"
+                value={quantity}
+                onChange={(e) => setQuantity(e.target.value)}
+                required
+                className="form-control"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="currency">Currency:</label>
+              <select
+                id="currency"
+                value={currency}
+                onChange={(e) => setCurrency(e.target.value)}
+                required
+                className="form-control"
+              >
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="TRY">TRY</option>
+              </select>
+            </div>
+
+            <button type="submit" className="btn">Create Offer</button>
+          </form>
         </div>
-
-        <div className="form-group">
-          <label htmlFor="quantity">Piece</label>
-          <input
-            type="number"
-            id="quantity"
-            value={quantity}
-            onChange={(e) => setQuantity(e.target.value)}
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="currency">Currency</label>
-          <select
-            id="currency"
-            value={currency}
-            onChange={(e) => setCurrency(e.target.value)}
-            required
-          >
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
-            <option value="TRY">TRY</option>
-          </select>
-        </div>
-
-        <button type="submit">Create Offer</button>
-      </form>
+      </div>
     </div>
   );
 };

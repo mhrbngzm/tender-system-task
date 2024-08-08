@@ -1,42 +1,53 @@
 .acquisition-items-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 20px;
+  padding: 20px;
+}
+
+.card {
+  margin-bottom: 20px;
+}
+
+.card-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.card-body {
+  padding: 20px;
 }
 
 .acquisition-item-form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  width: 300px;
 }
 
-.acquisition-item-form label {
+.form-group {
+  margin-bottom: 15px;
+}
+
+.label {
   font-weight: bold;
 }
 
-.acquisition-item-form input {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.input {
+  margin-top: 5px;
 }
 
-.acquisition-item-form button {
-  padding: 0.5rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.btn {
+  margin-top: 10px;
 }
 
-.acquisition-item-form button:hover {
-  background-color: #0056b3;
+.error {
+  color: red;
+  margin-top: 10px;
 }
 
 .acquisition-items-list {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .acquisition-items-list ul {
@@ -45,25 +56,11 @@
 }
 
 .acquisition-items-list li {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  padding: 10px;
-  margin-bottom: 5px;
-  border-radius: 4px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
 }
 
-.acquisition-items-list li button {
-  padding: 0.3rem 0.6rem;
-  background-color: #ff4d4d;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.acquisition-items-list li button:hover {
-  background-color: #e60000;
+.btn-danger {
+  margin-left: 10px;
 }

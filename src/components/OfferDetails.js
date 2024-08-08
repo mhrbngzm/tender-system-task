@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import './assets/css/backend.css';
 import './OfferDetails.css';
 
 const OfferDetails = () => {
@@ -22,7 +23,7 @@ const OfferDetails = () => {
   }, [id]);
 
   if (error) {
-    return <p className="error">{error}</p>; // Hata mesajını göster
+    return <p className="offer-details-page-error">{error}</p>; // Hata mesajını göster
   }
 
   if (!offer) {
@@ -30,11 +31,14 @@ const OfferDetails = () => {
   }
 
   return (
-    <div className="offer-details-container">
-      <h1 className="offer-title">{offer.title}</h1>
-      <p className="offer-description">{offer.description}</p>
-      <p className="offer-price">Price: ${offer.price}</p>
-      <p className="offer-date">Created At: {new Date(offer.created_at).toLocaleString()}</p>
+    <div className="offer-details-page-container">
+      <div className="offer-details-page-card">
+        <h4 className="offer-details-page-title">{offer.title}</h4>
+        <p className="offer-details-page-description">{offer.description}</p>
+        <p className="offer-details-page-price">Price: ${offer.price}</p>
+        <p className="offer-details-page-date">Created At: {new Date(offer.created_at).toLocaleString()}</p>
+        <a href="/offers" className="offer-details-page-btn-primary">Back to Offer List</a>
+      </div>
     </div>
   );
 };

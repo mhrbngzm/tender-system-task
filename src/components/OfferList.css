@@ -1,43 +1,73 @@
-.offer-list-container {
+.offer-list-container-custom {
   padding: 20px;
+  margin-left: 250px; /* Sidebar genişliği kadar boşluk bırakır */
+  margin-top: 80px;
 }
 
-.offer-list {
+.offer-list-custom {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  flex-wrap: wrap ;
+  gap: 20px; /* Kartlar arasındaki boşluk */
 }
 
-.offer-card {
-  border: 1px solid #ddd;
-  border-radius: 5px;
+.offer-card-custom {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background: linear-gradient(117.76deg, rgba(255, 255, 255, 0.7) -7.21%, rgba(255, 255, 255, 0.5) 118.08%);
+  background-clip: border-box;
+  border: 1px solid #dee2e6(0, 0, 0, 0.125);
+  border-radius: 8px;
   padding: 20px;
   width: 200px;
   text-align: center;
 }
 
-.offer-title {
-  font-size: 16px;
-  font-weight: bold;
+.offer-card-header-custom {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Başlığı ortalar */
+  align-items: center;
 }
 
-.offer-price {
-  font-size: 18px;
-  font-weight: bold;
+.offer-card-title-custom {
+  margin: 0;
+  white-space: nowrap; /* Metni tek satırda tutar */
+  overflow: hidden; /* Taşan metni gizler */
+  text-overflow: ellipsis; /* Taşan metni "..." ile gösterir */
+  text-align: left; /* Başlığı sola hizala */
 }
 
-.offer-details-link {
-  display: inline-block;
-  margin-top: 10px;
-  color: #007bff;
+.offer-card-body-custom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.offer-card-text-custom {
+  margin-bottom: 10px;
+}
+
+.offer-btn-primary-custom {
+  background-color: #db51b6;
+  color: #fff;
+  padding: 10px 20px;
   text-decoration: none;
+  border-radius: 4px;
+  display: inline-block;
 }
 
-.offer-details-link:hover {
-  text-decoration: underline;
+.offer-btn-primary-custom:hover {
+  background-color: #0056b3;
 }
 
-.error {
+.error-custom {
   color: red;
   font-weight: bold;
 }
