@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
-import './Layout.css'; // CSS dosyasını içe aktarın
+import './Layout.css'; 
 
 const Layout = ({ children }) => {
   const location = useLocation();

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // useNavigate'ı import ettik
+import { Link, useNavigate } from 'react-router-dom'; 
 import axios from 'axios';
 import './assets/css/backend.css';
 import './SignUp.css';
-import signupImage from './assets/images/login/01.png'; // Resim yolunu güncelledik
+import signupImage from './assets/images/login/01.png'; 
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -13,7 +13,7 @@ const SignUp = () => {
   const [lastName, setLastName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate(); // useNavigate'ı tanımladık
+  const navigate = useNavigate(); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,7 +23,7 @@ const SignUp = () => {
     }
     try {
       await axios.post('http://localhost:5000/signup', { email, password, fullName, lastName, phoneNumber });
-      navigate('/signup-success'); // Başarılı kayıt sonrası yönlendirme
+      navigate('/signup-success'); 
     } catch (err) {
       setError('Error registering user');
     }

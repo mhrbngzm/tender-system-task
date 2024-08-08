@@ -37,7 +37,6 @@ const AcquisitionItems = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:5000/acquisition-items/${id}`);
-      // Silinen alım kalemini frontend listeden kaldırın
       setAcquisitionItems(acquisitionItems.filter(item => item.id !== id));
     } catch (err) {
       console.error('Error deleting acquisition item', err);
@@ -81,7 +80,8 @@ const AcquisitionItems = () => {
               {acquisitionItems.map((item) => (
                 <li key={item.id}>
                   {item.name}
-                  <button onClick={() => handleDelete(item.id)} className="btn btn-danger btn-sm ml-2">Delete</button>
+                  <div class="input-group-append">
+                  <button onClick={() => handleDelete(item.id)} className="btn btn-outline-primary">Delete</button></div>
                 </li>
               ))}
             </ul>
@@ -91,5 +91,10 @@ const AcquisitionItems = () => {
     </div>
   );
 };
+
+
+
+
+
 
 export default AcquisitionItems;

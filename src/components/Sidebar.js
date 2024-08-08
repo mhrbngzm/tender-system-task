@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './assets/css/backend.css';
-import './Sidebar.css'; // Import your custom CSS
+import './Sidebar.css'; 
 import logo from './assets/images/logo.png';
 
 const Sidebar = () => {

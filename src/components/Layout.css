@@ -1,42 +1,40 @@
-/* Layout.css */
+
 .layout-container {
     display: flex;
     flex-direction: column;
-    height: 100vh; /* Sayfanın tam yüksekliğini alır */
+    height: 100vh; 
     position: relative;
   }
   
   .navbar {
-    /* Navbar'ın üstte tam genişlikte olmasını sağlar */
+  
     width: 100%;
-    position: fixed; /* Sabit pozisyon */
+    position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000; /* Üstte görünmesini sağlar */
+    z-index: 1000;
   }
   
   .main-container {
     display: flex;
-    margin-top: 60px; /* Navbar yüksekliği */
-    height: calc(100vh - 60px); /* İçeriğin tüm yüksekliği kaplamasını sağlar */
+    margin-top: 60px;
+    height: calc(100vh - 60px);
   }
   
   .sidebar {
-    /* Sidebar'ın sol tarafta sabit bir genişlikte ve yukarıdan aşağıya doğru uzanmasını sağlar */
-    width: 250px; /* Genişliği ihtiyaca göre ayarlayabilirsiniz */
+    width: 250px; 
     flex-shrink: 0;
     height: 100%;
-    position: fixed; /* Sabit pozisyon */
-    top: 60px; /* Navbar yüksekliği */
+    position: fixed; 
+    top: 60px; 
     left: 0;
-    z-index: 900; /* Navbar'ın altında, ama içerikten üstte */
-    overflow-y: auto; /* İçerik sığmazsa kaydırma çubuğu ekler */
+    z-index: 900; 
+    overflow-y: auto;
   }
   
   .content {
-    /* İçeriğin genişliğini ayarlar ve sabitlenmiş sidebar'ın yanında yer almasını sağlar */
     flex: 1;
-    margin-left: 250px; /* Sidebar genişliği */
+    margin-left: 250px; 
     padding: 20px;
     height: 100%;
     overflow-y: auto;

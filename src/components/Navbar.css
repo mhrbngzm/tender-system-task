@@ -1,0 +1,37 @@
+
+.dropdown-menu {
+    display: none; 
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 0.5rem;
+    z-index: 1000;
+}
+
+.dropdown-menu.show {
+    display: block; 
+}
+
+.dropdown-item {
+    padding: 0.5rem 1rem;
+    color: #212529;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #fff;
+}
+
+.dropdown-header {
+    padding: 0.5rem 1rem;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #F56692;
+    border-color: #F56692;
+    box-shadow: unset; }
+

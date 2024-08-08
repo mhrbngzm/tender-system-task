@@ -16,7 +16,7 @@ const Login = () => {
     try {
       await axios.post('http://localhost:5000/login', { email, password });
       alert('Login successful');
-      navigate('/dashboard'); // Başarılı girişten sonra yönlendirme
+      navigate('/dashboard'); 
     } catch (err) {
       setError('Login failed');
     }

@@ -8,14 +8,14 @@ const app = express();
 
 // CORS ayarları
 app.use(cors({
-  origin: 'http://localhost:3000', // React uygulamanızın çalıştığı yer
+  origin: 'http://localhost:3000',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type']
 }));
 
 app.use(bodyParser.json());
 
-// Veritabanı bağlantısı oluşturun
+// Veritabanı bağlantısı
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'myuser',

@@ -1,6 +1,6 @@
 import React from 'react';
 import './assets/css/backend.css';
-import './Dashboard.css'; // CSS dosyasını ekleyin
+import './Dashboard.css'; 
 
 const Dashboard = () => {
   return (
@@ -13,7 +13,7 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="col-lg-6 content-right">
-        {/* Image or other content here */}
+        
       </div>
     </div>
   </div>

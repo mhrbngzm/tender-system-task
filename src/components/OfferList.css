@@ -1,13 +1,13 @@
 .offer-list-container-custom {
   padding: 20px;
-  margin-left: 250px; /* Sidebar genişliği kadar boşluk bırakır */
+  margin-left: 250px; 
   margin-top: 80px;
 }
 
 .offer-list-custom {
   display: flex;
   flex-wrap: wrap ;
-  gap: 20px; /* Kartlar arasındaki boşluk */
+  gap: 20px; 
 }
 
 .offer-card-custom {
@@ -31,16 +31,16 @@
   margin-bottom: 10px;
   width: 100%;
   display: flex;
-  justify-content: center; /* Başlığı ortalar */
+  justify-content: center;
   align-items: center;
 }
 
 .offer-card-title-custom {
   margin: 0;
-  white-space: nowrap; /* Metni tek satırda tutar */
-  overflow: hidden; /* Taşan metni gizler */
-  text-overflow: ellipsis; /* Taşan metni "..." ile gösterir */
-  text-align: left; /* Başlığı sola hizala */
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  text-align: left; 
 }
 
 .offer-card-body-custom {
@@ -55,7 +55,7 @@
 }
 
 .offer-btn-primary-custom {
-  background-color: #db51b6;
+  background-color: #F56692;
   color: #fff;
   padding: 10px 20px;
   text-decoration: none;
@@ -63,8 +63,12 @@
   display: inline-block;
 }
 
+
+
 .offer-btn-primary-custom:hover {
-  background-color: #0056b3;
+  color: #fff;
+    background-color: #f34278;
+    border-color: #f23670;
 }
 
 .error-custom {
